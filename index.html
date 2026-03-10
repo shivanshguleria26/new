@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <title>Riya's Surprise ❤️</title>
@@ -149,15 +150,11 @@ but I’d really like to walk it with you.
 
 </div>
 
-<!-- music -->
+<!-- AUDIO -->
 
-<iframe
-id="music"
-width="0"
-height="0"
-src=""
-allow="autoplay">
-</iframe>
+<audio id="music" preload="auto">
+<source src="song.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 
@@ -206,14 +203,17 @@ function accept(){
 document.getElementById("proposal").style.display="none"
 document.getElementById("final").style.display="block"
 
+fireworks()
+
 }
 
 /* play song */
 
 function playMusic(){
 
-document.getElementById("music").src=
-"https://www.youtube.com/embed/CnEqrgMlWLQ?autoplay=1&controls=0"
+let music=document.getElementById("music")
+music.currentTime=0
+music.play()
 
 }
 
@@ -252,8 +252,7 @@ b.style.left=Math.random()*100+"vw"
 
 let colors=["red","pink","yellow","purple"]
 
-b.style.background=
-colors[Math.floor(Math.random()*colors.length)]
+b.style.background=colors[Math.floor(Math.random()*colors.length)]
 
 document.body.appendChild(b)
 
@@ -292,6 +291,39 @@ document.body.appendChild(heart)
 setTimeout(()=>heart.remove(),2000)
 
 }
+
+}
+
+/* fireworks */
+
+function fireworks(){
+
+setInterval(()=>{
+
+for(let i=0;i<20;i++){
+
+let spark=document.createElement("div")
+
+spark.innerHTML="✨"
+
+spark.style.position="absolute"
+spark.style.left=Math.random()*100+"vw"
+spark.style.top=Math.random()*100+"vh"
+spark.style.fontSize="20px"
+
+spark.animate([
+{transform:"scale(1)",opacity:1},
+{transform:"scale(2)",opacity:0}
+],
+{duration:1500})
+
+document.body.appendChild(spark)
+
+setTimeout(()=>spark.remove(),1500)
+
+}
+
+},1200)
 
 }
 
